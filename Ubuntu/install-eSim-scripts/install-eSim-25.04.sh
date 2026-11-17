@@ -51,10 +51,10 @@ function createConfigFile
     echo "[eSim]" >> $config_dir/$config_file
     echo "eSim_HOME = $eSim_Home" >> $config_dir/$config_file
     echo "LICENSE = %(eSim_HOME)s/LICENSE" >> $config_dir/$config_file
-    echo "KicadLib = %(eSim_HOME)s/library/kicadLibrary.tar.xz" >> $config_dir/$config_file
+    echo "KicadLib = %(eSim_HOME)s/MacOS/library/kicadLibrary.tar.xz" >> $config_dir/$config_file
     echo "IMAGES = %(eSim_HOME)s/images" >> $config_dir/$config_file
     echo "VERSION = %(eSim_HOME)s/VERSION" >> $config_dir/$config_file
-    echo "MODELICA_MAP_JSON = %(eSim_HOME)s/library/ngspicetoModelica/Mapping.json" >> $config_dir/$config_file
+    echo "MODELICA_MAP_JSON = %(eSim_HOME)s/MacOS/library/ngspicetoModelica/Mapping.json" >> $config_dir/$config_file
    
 }
 
@@ -63,7 +63,7 @@ function installNghdl
 {
 
     echo "Installing NGHDL..........................."
-    unzip -o nghdl.zip
+    unzip -o MacOS/nghdl.zip
     cd nghdl/
     chmod +x install-nghdl.sh
 
@@ -87,7 +87,7 @@ function installSky130Pdk
     echo "Installing SKY130 PDK......................"
     
     # Extract SKY130 PDK
-    tar -xJf library/sky130_fd_pr.tar.xz
+    tar -xJf MacOS/library/sky130_fd_pr.tar.xz
 
     # Remove any previous sky130-fd-pdr instance, if any
     sudo rm -rf /usr/share/local/sky130_fd_pr
@@ -133,7 +133,7 @@ function installKicad
                 fi
             else
                 echo "KiCad 8.0 is already installed."
-                exit 0
+                return 0
             fi
         fi
 
@@ -229,7 +229,7 @@ function copyKicadLibrary
 {
 
     #Extract custom KiCad Library
-    tar -xJf library/kicadLibrary.tar.xz
+    tar -xJf MacOS/library/kicadLibrary.tar.xz
 
     if [ -d ~/.config/kicad/6.0 ];then
         echo "kicad config folder already exists"
@@ -265,7 +265,7 @@ function createDesktopStartScript
 
     # Generating new esim-start.sh
     echo '#!/bin/bash' > esim-start.sh
-    echo "cd $eSim_Home/src/frontEnd" >> esim-start.sh
+    echo "cd $eSim_Home/MacOS/src/frontEnd" >> esim-start.sh
     echo "source $config_dir/env/bin/activate" >> esim-start.sh
     echo "python3 Application.py" >> esim-start.sh
 
@@ -315,7 +315,7 @@ function createDesktopStartScript
     trap error_exit ERR
 
     # Copying logo.png to .esim directory to access as icon
-    cp -vp images/logo.png $config_dir
+    cp -vp MacOS/images/logo.png "$config_dir"
 
 }
 
@@ -426,8 +426,8 @@ elif [ $option == "--uninstall" ];then
         sudo rm -R /usr/share/local/sky130_fd_pr
 
         echo "Removing NGHDL..........................."
-        rm -rf library/modelParamXML/Nghdl/*
-        rm -rf library/modelParamXML/Ngveri/*
+        rm -rf MacOS/library/modelParamXML/Nghdl/*
+        rm -rf MacOS/library/modelParamXML/Ngveri/*
         cd nghdl/
         if [ $? -eq 0 ];then
         	chmod +x install-nghdl.sh
