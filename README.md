@@ -458,9 +458,9 @@ These points are recorded to clearly separate verified fixes from remaining work
 
 ---
 
-## 10. GitHub Repository and Commit
+## 10. GitHub Repository and Commits
 
-The code changes have been committed and pushed to the forked repository.
+The installer changes and README documentation have been committed and pushed to the forked repository.
 
 **Repository:**
 https://github.com/ROOPAM2025/eSim
@@ -468,7 +468,7 @@ https://github.com/ROOPAM2025/eSim
 **Branch:**
 `installers`
 
-**Commit:**
+**Commit 1 — Installer compatibility fixes:**
 `1f1eaaaf`
 
 **Commit message:**
@@ -476,6 +476,15 @@ https://github.com/ROOPAM2025/eSim
 
 **Commit link:**
 https://github.com/ROOPAM2025/eSim/commit/1f1eaaaf
+
+**Commit 2 — README documentation:**
+`687dec11`
+
+**Commit message:**
+`Improve README with Ubuntu 25.04 installation fixes`
+
+**Commit link:**
+https://github.com/ROOPAM2025/eSim/commit/687dec11
 
 ---
 
@@ -495,20 +504,4 @@ This work provides a set of installer compatibility improvements and documents t
 
 **Project:** eSim 2.5 Installation Compatibility Fixes
 **Task:** FOSSEE Internship Screening – Task 4
-**Operating System:** Ubuntu 25.04eSim Packaging
-====
-
-It contains all the documentation for packaging eSim for distribution.
-
-
-# Packaging eSim for Distribution:
-
-1. eSim is currently packaged and distributed for Ubuntu OS (Linux) and MS Windows OS.
-
-2. Refer the [documentation](Version_Change.md) for the changes to be done when a new release is to be made.
-
-> Note: These changes have to be made `first` before proceeding with the packaging on either platform.
-
-3. Refer the [documentation](Ubuntu/README.md) to package eSim for Ubuntu OS.
-
-4. Refer the [documentation](Windows/README.md) to package eSim for Windows OS.
+**Operating System:** Ubuntu 25.04
